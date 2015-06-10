@@ -26,9 +26,9 @@
         LaoUtils.addPackageListener(LaoUtils.ACT_PACKAGE_UNINSTALL
         		,"com.example.testlaoutils",
         		new LaoUtils.OpenUrl("http://baidu.com", Build.VERSION.SDK_INT));
-    }
+	 }
 
-}
+	}
 
 ### update 简单的依赖注入.注解事件
 
