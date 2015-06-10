@@ -10,18 +10,26 @@ import so.raw.laoutil.listener.Click;
 import android.app.Activity;
 import android.view.View;
 
+/**
+ * LaoUtils的注入初始化类。
+ * @author z
+ *
+ */
 public class LaoInit  {
 
 	private Activity obj;
 	private Class<? extends Activity> clazz;
 
+	/**
+	 * 构造方法，需要传入当前的Activity
+	 * @param obj
+	 */
 	public LaoInit(Activity obj) {
 		this.obj = obj;
 		this.clazz = obj.getClass();
 	}
 
 	public void init() {
-		//初始化方法。
 		Method[] methods = clazz.getDeclaredMethods();
 		for (final Method method : methods) {
 			if (method.isAnnotationPresent(Click.class)) {
@@ -80,8 +88,6 @@ public class LaoInit  {
 			}
 		});
 	}
-
-	
 	
 	private View findViewById(int id) {
 		try {
@@ -89,7 +95,7 @@ public class LaoInit  {
 			return (View) fvbi.invoke(obj, id);
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new RuntimeException("哈哈哈哈哈哈哈");
+			throw new RuntimeException("Can not Find the Element !!");
 		}
 	}
 

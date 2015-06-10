@@ -4,7 +4,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 /**
- * onclick事件的处理类。
+ * onclick事件注入声明
  * @author z
  *
  */

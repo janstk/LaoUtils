@@ -3,7 +3,11 @@ package so.raw.laoutil.injury;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
-//ÒÀÀµ×¢Èë...
+/**
+ * ×Ö¶Î×¢ÈëÉùÃ÷
+ * @author z
+ *
+ */
 @Retention(RetentionPolicy.RUNTIME)
 public @interface FieldInjury {
 

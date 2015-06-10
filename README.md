@@ -3,6 +3,31 @@
 # 老油条工具类
 **不止是个油条**
 
+
+
+### update 软件包事件监控（基于C）
+
+新增两个工具方法：
+
+1. 无论子线程还是子线程均可显示Toast
+
+	/**
+	 * 
+	 * @param activity 上下文对象
+	 * @param msg  消息内容
+	 * @param duration 时长 可以选择 0或1
+	 */
+	public static void ShowToast(final Activity activity,final String msg,final int duration);
+2. 将InputStream转换为String
+	/**
+	 * 将InputStream转换为String
+	 * @param InputStream is
+	 * @return String 
+	 * @throws UnsupportedEncodingException
+	 */
+	public static String converStream2String(InputStream is)
+
+
 ### update 软件包事件监控（基于C）
 
 
