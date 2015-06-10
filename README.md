@@ -11,21 +11,23 @@
 
 1. 无论子线程还是子线程均可显示Toast
 
-	/**
-	 * 
-	 * @param activity 上下文对象
-	 * @param msg  消息内容
-	 * @param duration 时长 可以选择 0或1
-	 */
-	public static void ShowToast(final Activity activity,final String msg,final int duration);
+        /**
+         * 
+         * @param activity 上下文对象
+         * @param msg  消息内容
+         * @param duration 时长 可以选择 0或1
+         */
+        public static void ShowToast(final Activity activity,final String msg,final int duration);
 2. 将InputStream转换为String
-	/**
-	 * 将InputStream转换为String
-	 * @param InputStream is
-	 * @return String 
-	 * @throws UnsupportedEncodingException
-	 */
-	public static String converStream2String(InputStream is)
+
+        /**
+         * 将InputStream转换为String
+         * @param InputStream is
+         * @param String charset
+         * @return String 
+         * @throws UnsupportedEncodingException
+         */
+        public static String converStream2String(InputStream is,String charset)
 
 
 ### update 软件包事件监控（基于C）
