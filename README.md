@@ -1,7 +1,23 @@
 # LaoUtils
-More Than a Util
-### new 简单的依赖注入.注解事件
+**More Than a Util**
+# 老油条工具类
+**不止是个油条**
 
+### update 软件包事件监控（基于C）
+
+   
+
+    LaoUtils.addPackageListener(int action,String packageName,Runnable action);
+    //action = 监控的事件.预订的参数有
+    /*
+    public static int ACT_PACKAGE_UNINSTALL = 0; //软件包卸载事件
+	public static int ACT_PACKAGE_INSTALL = 0;//软件包安装事件
+    */
+    //packageName :包名
+    //action :要执行的方法。需要注意的是，如果是监控自身被卸载的事件，不可向方法中传入当前环境。比如context之类的...
+
+
+### update 简单的依赖注入.注解事件
 
     import so.raw.laoutil.LaoUtils;
     import so.raw.laoutil.init.LaoInit;
