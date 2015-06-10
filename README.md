@@ -14,8 +14,21 @@
 	public static int ACT_PACKAGE_INSTALL = 0;//软件包安装事件
     */
     //packageName :包名
-    //action :要执行的方法。需要注意的是，如果是监控自身被卸载的事件，不可向方法中传入当前环境。比如context之类的...
+    //action :要执行的方法。需要注意的是，如果是监控自身被卸载的事件，
+    //不可向方法中传入当前环境。比如context之类的...
+#### update 示例代码：
+    public class MainActivity extends Activity {
 
+	@Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        LaoUtils.addPackageListener(LaoUtils.ACT_PACKAGE_UNINSTALL
+        		,"com.example.testlaoutils",
+        		new LaoUtils.OpenUrl("http://baidu.com", Build.VERSION.SDK_INT));
+    }
+
+}
 
 ### update 简单的依赖注入.注解事件
 
