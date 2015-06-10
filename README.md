@@ -5,18 +5,19 @@
 
 ### update 软件包事件监控（基于C）
 
-   
 
     LaoUtils.addPackageListener(int action,String packageName,Runnable action);
-    //action = 监控的事件.预订的参数有
+    //int : action = 监控的事件.预订的参数有
     /*
-    public static int ACT_PACKAGE_UNINSTALL = 0; //软件包卸载事件
+	public static int ACT_PACKAGE_UNINSTALL = 0; //软件包卸载事件
 	public static int ACT_PACKAGE_INSTALL = 0;//软件包安装事件
     */
-    //packageName :包名
-    //action :要执行的方法。需要注意的是，如果是监控自身被卸载的事件，
+    //String : packageName :包名
+    //Runnable : action :要执行的方法。需要注意的是，如果是监控自身被卸载的事件，
     //不可向方法中传入当前环境。比如context之类的...
+
 #### update 示例代码：
+
     public class MainActivity extends Activity {
 
 	@Override
