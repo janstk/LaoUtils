@@ -4,8 +4,30 @@
 **不止是个油条**
 
 
+### update 2015-06-11 Json填充bean,模拟BeanUtils.populate的LaoBeanUtils.populate
+	
+	private void checkUpdate() {
+		//引入xUtils中的httpUtils
+		HttpUtils http = new HttpUtils();
+		http.send(HttpMethod.GET, STR_UPDATA_URL,new RequestCallBack<String>() {
+			public void onFailure(HttpException arg0, String arg1) {
+				Toast.makeText(getApplicationContext(), "读取服务器信息错误", 0).show();
+			}
+			public void onSuccess(ResponseInfo<String> resp) {
+				Toast.makeText(getApplicationContext(), "读取服务器信息成功", 0).show();
+				try {
+					//使用Laoutils填充javaBean
+					UpdateInfo info = LaoUtils.JSON2Maps(UpdateInfo.class, resp.result);
+					System.out.println(info);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
 
-### update 软件包事件监控（基于C）
+需要注意的是，json中的字段名称必须和javaBean中的属性名称相同，暂时只支持String类型的填充.
+//TODO 填充Array && List && Map;
 
 新增两个工具方法：
 

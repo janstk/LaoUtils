@@ -4,6 +4,13 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
+import java.lang.reflect.InvocationTargetException;
+import java.util.HashMap;
+import java.util.Map;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import android.app.Activity;
 import android.view.View;
@@ -17,6 +24,33 @@ public class LaoUtils {
 		System.loadLibrary("lao");
 	}
 
+	/**
+	 * 将json填充到javabean中
+	 * @param clazz
+	 * @param jsonStr
+	 * @return
+	 * @throws JSONException
+	 * @throws InstantiationException
+	 * @throws IllegalAccessException
+	 * @throws InvocationTargetException
+	 */
+	public static <T> T JSON2Maps(Class<T> clazz, String jsonStr)
+			throws JSONException, InstantiationException,
+			IllegalAccessException, InvocationTargetException {
+		Map<String, Object> map = new HashMap<String, Object>();
+		JSONObject json = new JSONObject(jsonStr);
+		JSONArray names = json.names();
+		for (int i = 0; i < names.length(); i++) {
+			String key = names.getString(i);
+			Object value = json.get(key);
+			map.put(key, value);
+		}
+		T instance = clazz.newInstance();
+		LaoBeanUtils.populate(instance, map);
+		return instance;
+	}
+	
+	
 	/**
 	 * 用于替换蛋疼的findViewById();
 	 * @param aty
@@ -76,12 +110,13 @@ public class LaoUtils {
 	/**
 	 * 将InputStream转换为String
 	 * 
-	 * @param InputStream
-	 *            is
+	 * @param InputStream is
+	 * @param String charset
 	 * @return String
 	 * @throws UnsupportedEncodingException
+
 	 */
-	public static String converStream2String(InputStream is)
+	public static String converStream2String(InputStream is,String charset)
 			throws UnsupportedEncodingException {
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		byte[] buffer = new byte[512];
@@ -97,7 +132,7 @@ public class LaoUtils {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return new String(baos.toByteArray(), "gb2312");
+		return new String(baos.toByteArray(),charset);
 	}
 
 	/**
